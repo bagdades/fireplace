@@ -7,10 +7,19 @@
 AS	Makefile	/^AS = avr-gcc$/;"	m
 CC	Makefile	/^CC = avr-gcc$/;"	m
 CP	Makefile	/^CP = avr-objcopy$/;"	m
+F_CPU	fireplace.h	23;"	d
+ISR	fireplace.c	/^ISR(TIMER0_OVF_vect) {$/;"	f
+Init	fireplace.c	/^void Init(void){$/;"	f	signature:(void)
+Init	fireplace.h	/^void Init(void);$/;"	p	signature:(void)
 LD	Makefile	/^LD = avr-gcc$/;"	m
 MCU	Makefile	/^MCU = mcu=atmega8$/;"	m
 OD	Makefile	/^OD = avr-objdump$/;"	m
 RM	Makefile	/^RM = rm$/;"	m
 SZ	Makefile	/^SZ = avr-size$/;"	m
+T0_FREQ	fireplace.h	28;"	d
+T0_INIT	fireplace.h	29;"	d
+T0_PRESC	fireplace.h	27;"	d
 TARGET	Makefile	/^TARGET = fireplace$/;"	m
+Timer0Init	fireplace.c	/^void Timer0Init(void) {$/;"	f	signature:(void)
+Timer0Init	fireplace.h	/^void Timer0Init(void);$/;"	p	signature:(void)
 main	main.c	/^int main(void)$/;"	f	signature:(void)

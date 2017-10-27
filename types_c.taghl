@@ -1,2 +1,3 @@
-syn keyword CTagsFunction main
+syn keyword CTagsFunction main Timer0Init Init ISR
+syn keyword CTagsDefinedName F_CPU T0_INIT T0_PRESC T0_FREQ
 
