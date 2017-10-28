@@ -17,11 +17,46 @@
  */
 #include "fireplace.h"
 
+
 int main(void)
 {
+	uint8_t keyPressed;
 	Timer0Init();
 	Init();
-	while(1);
-	return 0;
+	while(1)
+	{
+		if (flag.keyScan) 
+		{
+			keyPressed = KeyScan();
+			switch (keyPressed) 
+			{
+				case _ON_OFF:
+					if(flag.stateOn)
+						flag.stateOn = FALSE;
+					else flag.stateOn = TRUE;
+					break;
+				case _DIMMER:
+					if(flag.stateDimmer)
+						flag.stateDimmer = FALSE;
+					else flag.stateDimmer = TRUE;
+					break;
+				case _LOW:
+					if(flag.stateLow)
+						flag.stateLow = FALSE;
+					else flag.stateLow = TRUE;
+					break;
+				case _HIGH:
+					if(flag.stateHigh)
+						flag.stateHigh = FALSE;
+					else flag.stateHigh = TRUE;
+					break;
+				default:
+					break;
+			}
+			flag.keyScan = FALSE;	
+			flag.ledUpdate = TRUE;
+		}
+		LedUpdate();
+	}
 }
 

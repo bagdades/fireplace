@@ -11,22 +11,42 @@ DELAY_LONG	fireplace.h	43;"	d
 DELAY_SHORT	fireplace.h	42;"	d
 FALSE	fireplace.h	/^	FALSE = 0,$/;"	e	enum:__anon1
 F_CPU	fireplace.h	23;"	d
+Flags	fireplace.h	/^volatile struct Flags {$/;"	s
+Flags::keyScan	fireplace.h	/^	uint8_t keyScan:	1;$/;"	m	struct:Flags	access:public
+Flags::ledUpdate	fireplace.h	/^	uint8_t ledUpdate:	1;$/;"	m	struct:Flags	access:public
+Flags::stateDimmer	fireplace.h	/^	uint8_t stateDimmer:	1;$/;"	m	struct:Flags	access:public
+Flags::stateHigh	fireplace.h	/^	uint8_t	stateHigh:	1;$/;"	m	struct:Flags	access:public
+Flags::stateLow	fireplace.h	/^	uint8_t stateLow:	1;$/;"	m	struct:Flags	access:public
+Flags::stateOn	fireplace.h	/^	uint8_t stateOn:	1;$/;"	m	struct:Flags	access:public
 ISR	fireplace.c	/^ISR(TIMER0_OVF_vect) $/;"	f
 Init	fireplace.c	/^void Init(void)$/;"	f	signature:(void)
 Init	fireplace.h	/^void Init(void);$/;"	p	signature:(void)
 KEY_DDR	fireplace.h	33;"	d
-KEY_DIM	fireplace.h	40;"	d
-KEY_HIGH	fireplace.h	38;"	d
-KEY_LOW	fireplace.h	37;"	d
-KEY_ON	fireplace.h	39;"	d
+KEY_DIM	fireplace.h	39;"	d
+KEY_HIGH	fireplace.h	37;"	d
+KEY_LOW	fireplace.h	36;"	d
+KEY_MASK	fireplace.h	40;"	d
+KEY_ON	fireplace.h	38;"	d
 KEY_PIN	fireplace.h	34;"	d
 KEY_PORT	fireplace.h	32;"	d
 KeyScan	fireplace.c	/^uint8_t KeyScan(void)$/;"	f	signature:(void)
 KeyScan	fireplace.h	/^uint8_t KeyScan(void);$/;"	p	signature:(void)
 LD	Makefile	/^LD = avr-gcc$/;"	m
-LED_COM	fireplace.h	36;"	d
+LED_COM	fireplace.h	50;"	d
+LED_DDR	fireplace.h	47;"	d
+LED_DIM	fireplace.h	54;"	d
+LED_HIGH	fireplace.h	52;"	d
+LED_LOW	fireplace.h	51;"	d
+LED_MASK	fireplace.h	55;"	d
+LED_ON	fireplace.h	53;"	d
+LED_PIN	fireplace.h	48;"	d
+LED_PORT	fireplace.h	46;"	d
+LedUpdate	fireplace.c	/^void LedUpdate(void)$/;"	f	signature:(void)
+LedUpdate	fireplace.h	/^void LedUpdate(void);$/;"	p	signature:(void)
 MCU	Makefile	/^MCU = mcu=atmega8$/;"	m
 OD	Makefile	/^OD = avr-objdump$/;"	m
+PERIOD_KEY_SCAN	fireplace.h	58;"	d
+PERIOD_LED_UPDATE	fireplace.h	59;"	d
 RM	Makefile	/^RM = rm$/;"	m
 SZ	Makefile	/^SZ = avr-size$/;"	m
 T0_FREQ	fireplace.h	28;"	d
@@ -37,10 +57,21 @@ TRUE	fireplace.h	/^	TRUE$/;"	e	enum:__anon1
 Timer0Init	fireplace.c	/^void Timer0Init(void) $/;"	f	signature:(void)
 Timer0Init	fireplace.h	/^void Timer0Init(void);$/;"	p	signature:(void)
 _DIMMER	fireplace.h	/^	_DIMMER,$/;"	e	enum:keypad
-_HIGH	fireplace.h	/^	_HIGH$/;"	e	enum:keypad
+_FALSE	fireplace.h	/^	_FALSE$/;"	e	enum:keypad
+_HIGH	fireplace.h	/^	_HIGH,$/;"	e	enum:keypad
 _LOW	fireplace.h	/^	_LOW,$/;"	e	enum:keypad
 _ON_OFF	fireplace.h	/^	_ON_OFF = 1,$/;"	e	enum:keypad
+countTimeKeyScan	fireplace.c	/^volatile uint8_t countTimeKeyScan = PERIOD_KEY_SCAN;$/;"	v
+countTimeLedUpdate	fireplace.c	/^volatile uint8_t countTimeLedUpdate;$/;"	v
+flag	fireplace.h	/^}flag;$/;"	v	typeref:struct:Flags
 key	fireplace.c	/^	uint8_t key;$/;"	l
+keyPressed	main.c	/^	uint8_t keyPressed;$/;"	l
+keyScan	fireplace.h	/^	uint8_t keyScan:	1;$/;"	m	struct:Flags	access:public
 keypad	fireplace.h	/^enum keypad {$/;"	g
+ledUpdate	fireplace.h	/^	uint8_t ledUpdate:	1;$/;"	m	struct:Flags	access:public
 main	main.c	/^int main(void)$/;"	f	signature:(void)
+stateDimmer	fireplace.h	/^	uint8_t stateDimmer:	1;$/;"	m	struct:Flags	access:public
+stateHigh	fireplace.h	/^	uint8_t	stateHigh:	1;$/;"	m	struct:Flags	access:public
+stateLow	fireplace.h	/^	uint8_t stateLow:	1;$/;"	m	struct:Flags	access:public
+stateOn	fireplace.h	/^	uint8_t stateOn:	1;$/;"	m	struct:Flags	access:public
 temp	fireplace.c	/^	static uint8_t temp = 0;$/;"	l	file:
