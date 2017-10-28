@@ -20,7 +20,6 @@
 
 
 void Init(void){
-
 }
 
 void Timer0Init(void) {

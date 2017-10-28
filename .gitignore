@@ -1,0 +1,6 @@
+fireplace.eep
+fireplace.elf
+fireplace.hex
+fireplace.lss
+*.d
+*.o

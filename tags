@@ -11,7 +11,15 @@ F_CPU	fireplace.h	23;"	d
 ISR	fireplace.c	/^ISR(TIMER0_OVF_vect) {$/;"	f
 Init	fireplace.c	/^void Init(void){$/;"	f	signature:(void)
 Init	fireplace.h	/^void Init(void);$/;"	p	signature:(void)
+KEY_DDR	fireplace.h	33;"	d
+KEY_DIM	fireplace.h	40;"	d
+KEY_HIGH	fireplace.h	38;"	d
+KEY_LOW	fireplace.h	37;"	d
+KEY_ON	fireplace.h	39;"	d
+KEY_PIN	fireplace.h	34;"	d
+KEY_PORT	fireplace.h	32;"	d
 LD	Makefile	/^LD = avr-gcc$/;"	m
+LED_COM	fireplace.h	36;"	d
 MCU	Makefile	/^MCU = mcu=atmega8$/;"	m
 OD	Makefile	/^OD = avr-objdump$/;"	m
 RM	Makefile	/^RM = rm$/;"	m
