@@ -1,3 +1,6 @@
-syn keyword CTagsFunction Init main Timer0Init ISR
-syn keyword CTagsDefinedName KEY_DIM T0_INIT T0_PRESC T0_FREQ KEY_PORT KEY_LOW KEY_HIGH KEY_PIN LED_COM F_CPU KEY_DDR KEY_ON
+syn keyword CTagsLocalVariable temp key
+syn keyword CTagsEnumeratorName keypad
+syn keyword CTagsEnumerationValue _LOW _DIMMER _HIGH TRUE FALSE _ON_OFF
+syn keyword CTagsFunction KeyScan Init Timer0Init main ISR
+syn keyword CTagsDefinedName KEY_PIN DELAY_SHORT KEY_DIM KEY_LOW T0_FREQ F_CPU LED_COM KEY_ON KEY_PORT KEY_HIGH T0_PRESC DELAY_LONG KEY_DDR T0_INIT
 

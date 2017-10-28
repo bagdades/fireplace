@@ -19,10 +19,12 @@
 #include "fireplace.h"
 
 
-void Init(void){
+void Init(void)
+{
 }
 
-void Timer0Init(void) {
+void Timer0Init(void) 
+{
 #if(F_CPU != 8000000)
 #error ***You must set TCCR0
 #endif
@@ -31,6 +33,37 @@ void Timer0Init(void) {
 	TIMSK |= (1 << TOIE0);  //enable interrupt overllow timer0
 }
 
-ISR(TIMER0_OVF_vect) {
+ISR(TIMER0_OVF_vect) 
+{
 	TCNT0 = T0_INIT;
+}
+
+uint8_t KeyScan(void)
+{
+	static uint8_t temp = 0;
+	uint8_t key;
+	if (bit_is_clear(KEY_PIN, KEY_ON)) 
+	key = _ON_OFF;
+	else if(bit_is_clear(KEY_PIN, KEY_DIM))
+		key = _DIMMER;
+		else if(bit_is_clear(KEY_PIN, KEY_LOW))
+			key = _LOW;
+			else if(bit_is_clear(KEY_PIN, KEY_HIGH))
+				key = _HIGH;
+				else key = 0;
+				if (key) 
+				{
+					if (temp == DELAY_SHORT) 
+					{
+						temp = 0;
+						return key;
+					}					
+					temp++;
+				} 
+				else 
+				{
+					temp = 0;
+					return 0;
+				}
+	return 0;
 }

@@ -39,7 +39,24 @@
 #define KEY_ON		PD1
 #define KEY_DIM		PD0
 
+#define DELAY_SHORT	1
+#define DELAY_LONG	30
+
+//Enumerations
+enum keypad {
+	_ON_OFF = 1,
+	_DIMMER,
+	_LOW,
+	_HIGH
+};
+
+enum {
+	FALSE = 0,
+	TRUE
+};
+
 
 //Prototypes
 void Timer0Init(void);
 void Init(void);
+uint8_t KeyScan(void);

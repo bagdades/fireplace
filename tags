@@ -7,9 +7,12 @@
 AS	Makefile	/^AS = avr-gcc$/;"	m
 CC	Makefile	/^CC = avr-gcc$/;"	m
 CP	Makefile	/^CP = avr-objcopy$/;"	m
+DELAY_LONG	fireplace.h	43;"	d
+DELAY_SHORT	fireplace.h	42;"	d
+FALSE	fireplace.h	/^	FALSE = 0,$/;"	e	enum:__anon1
 F_CPU	fireplace.h	23;"	d
-ISR	fireplace.c	/^ISR(TIMER0_OVF_vect) {$/;"	f
-Init	fireplace.c	/^void Init(void){$/;"	f	signature:(void)
+ISR	fireplace.c	/^ISR(TIMER0_OVF_vect) $/;"	f
+Init	fireplace.c	/^void Init(void)$/;"	f	signature:(void)
 Init	fireplace.h	/^void Init(void);$/;"	p	signature:(void)
 KEY_DDR	fireplace.h	33;"	d
 KEY_DIM	fireplace.h	40;"	d
@@ -18,6 +21,8 @@ KEY_LOW	fireplace.h	37;"	d
 KEY_ON	fireplace.h	39;"	d
 KEY_PIN	fireplace.h	34;"	d
 KEY_PORT	fireplace.h	32;"	d
+KeyScan	fireplace.c	/^uint8_t KeyScan(void)$/;"	f	signature:(void)
+KeyScan	fireplace.h	/^uint8_t KeyScan(void);$/;"	p	signature:(void)
 LD	Makefile	/^LD = avr-gcc$/;"	m
 LED_COM	fireplace.h	36;"	d
 MCU	Makefile	/^MCU = mcu=atmega8$/;"	m
@@ -28,6 +33,14 @@ T0_FREQ	fireplace.h	28;"	d
 T0_INIT	fireplace.h	29;"	d
 T0_PRESC	fireplace.h	27;"	d
 TARGET	Makefile	/^TARGET = fireplace$/;"	m
-Timer0Init	fireplace.c	/^void Timer0Init(void) {$/;"	f	signature:(void)
+TRUE	fireplace.h	/^	TRUE$/;"	e	enum:__anon1
+Timer0Init	fireplace.c	/^void Timer0Init(void) $/;"	f	signature:(void)
 Timer0Init	fireplace.h	/^void Timer0Init(void);$/;"	p	signature:(void)
+_DIMMER	fireplace.h	/^	_DIMMER,$/;"	e	enum:keypad
+_HIGH	fireplace.h	/^	_HIGH$/;"	e	enum:keypad
+_LOW	fireplace.h	/^	_LOW,$/;"	e	enum:keypad
+_ON_OFF	fireplace.h	/^	_ON_OFF = 1,$/;"	e	enum:keypad
+key	fireplace.c	/^	uint8_t key;$/;"	l
+keypad	fireplace.h	/^enum keypad {$/;"	g
 main	main.c	/^int main(void)$/;"	f	signature:(void)
+temp	fireplace.c	/^	static uint8_t temp = 0;$/;"	l	file:
