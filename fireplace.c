@@ -16,6 +16,21 @@
  * =====================================================================================
  */
 
+
+/*-----------------------------------------------------------------------------
+ *  IR Decoder  ~data, data, user_code2, user_code1
+ *	uPD6121
+ *	user code1=00
+ *	user code2=FF
+ *	data= 	C4	C1  C8  C9
+ *	~data=	3B  3E  37  36
+ *	All 32-bit
+ *	ON/OFF	3BC4FF00
+ *	DIMMER	3EC1FF00
+ *	LOW		37C8FF00
+ *	HIGH	36C9FF00
+ *-----------------------------------------------------------------------------*/
+
 #include "fireplace.h"
 
 volatile uint8_t countTimeKeyScan = PERIOD_KEY_SCAN;
