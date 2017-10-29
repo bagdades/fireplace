@@ -52,6 +52,10 @@ void Timer0Init(void)
 	TIMSK |= (1 << TOIE0);  //enable interrupt overllow timer0
 }
 
+ISR(INT0_vect)
+{
+}
+
 ISR(TIMER0_OVF_vect) 
 {
 	TCNT0 = T0_INIT;
@@ -89,32 +93,28 @@ uint8_t KeyScan(void)
 	else if(bit_is_clear(KEY_PIN, KEY_HIGH))
 		key = _HIGH;
 	else key = 0;
+
 	if (key) 
 	{
-		if (temp == DELAY_SHORT) 
-		{
-			/* temp = 0; */
-			return key;
-		}					
-		temp++;
-		if(temp == 255)
-			temp = DELAY_SHORT + 1;
+		if(!temp)
+			temp = key;
 	} 
 	else 
 	{
+		key = temp;
 		temp = 0;
-		return 0;
+		return key;
 	}
-	return _FALSE;
+	return 0;
 }
 
 void LedUpdate(void)
 {
-	LED_DDR |= LED_MASK; /* Port out */
-	LED_PORT &= ~(1 << LED_COM); /* Led common set 0 (Led On)*/
-
 	if(flag.stateOn && flag.ledUpdate)
 	{
+		LED_DDR |= LED_MASK; /* Port out */
+		/* LED_PORT &= ~(1 << LED_COM); #<{(| Led common set 0 (Led On)|)}># */
+		LED_PORT &= ~LED_MASK;
 		LED_PORT |= (1 << LED_ON);
 		if(flag.stateDimmer)
 			LED_PORT |= (1 << LED_DIM);
@@ -128,6 +128,6 @@ void LedUpdate(void)
 	} 
 	else
 	{
-		LED_PORT &= ~LED_MASK;
+		LED_DDR &= ~LED_MASK;
 	}
 }

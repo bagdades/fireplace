@@ -52,11 +52,11 @@
 #define LED_HIGH	PD4
 #define LED_ON		PD1
 #define LED_DIM		PD0
-#define LED_MASK	((1 << LED_LOW)|(1 << LED_HIGH)|(1 << LED_ON)|(1 << LED_DIM))
+#define LED_MASK	((1 << LED_LOW)|(1 << LED_HIGH)|(1 << LED_ON)|(1 << LED_DIM)|(1 << LED_COM))
 
 //Times
 #define PERIOD_KEY_SCAN		15
-#define PERIOD_LED_UPDATE	7
+#define PERIOD_LED_UPDATE	1
 
 //Enumerations
 enum keypad {

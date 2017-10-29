@@ -36,19 +36,29 @@ int main(void)
 					else flag.stateOn = TRUE;
 					break;
 				case _DIMMER:
-					if(flag.stateDimmer)
-						flag.stateDimmer = FALSE;
-					else flag.stateDimmer = TRUE;
+					if(flag.stateOn)
+					{
+						if(flag.stateDimmer)
+							flag.stateDimmer = FALSE;
+						else flag.stateDimmer = TRUE;
+
+					}
 					break;
 				case _LOW:
-					if(flag.stateLow)
-						flag.stateLow = FALSE;
-					else flag.stateLow = TRUE;
+					if (flag.stateOn) 
+					{
+						if(flag.stateLow)
+							flag.stateLow = FALSE;
+						else flag.stateLow = TRUE;
+					}
 					break;
 				case _HIGH:
-					if(flag.stateHigh)
-						flag.stateHigh = FALSE;
-					else flag.stateHigh = TRUE;
+					if (flag.stateOn) 
+					{
+						if(flag.stateHigh)
+							flag.stateHigh = FALSE;
+						else flag.stateHigh = TRUE;
+					}
 					break;
 				default:
 					break;
