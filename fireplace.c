@@ -39,6 +39,8 @@ volatile uint8_t countTimeLedUpdate;
 
 void Init(void)
 {
+	OUT_PORT &= ~OUT_MASK;//Set output 0
+	OUT_DDR |= OUT_MASK;//Output port config out;
 	sei();
 }
 
@@ -50,10 +52,6 @@ void Timer0Init(void)
 	TCCR0 |= (1 << CS02) | (1 << CS00);  //T0_PRESC = 1024
 	TCNT0 = T0_INIT;
 	TIMSK |= (1 << TOIE0);  //enable interrupt overllow timer0
-}
-
-ISR(INT0_vect)
-{
 }
 
 ISR(TIMER0_OVF_vect) 
@@ -76,11 +74,11 @@ ISR(TIMER0_OVF_vect)
 uint8_t KeyScan(void)
 {
 	static uint8_t temp = 0;
-	uint8_t key;
+	uint8_t key = 0;
 
-	KEY_DDR &= ~(KEY_MASK); /* Port in */
-	KEY_PORT |= KEY_MASK; /* Pull-up */
 	LED_PORT |= (1 << LED_COM); /* Led common set 1 (Led Off) */
+	KEY_PORT |= KEY_MASK; /* Pull-up */
+	KEY_DDR &= ~(KEY_MASK); /* Port in */
 
 	countTimeLedUpdate = PERIOD_LED_UPDATE;
 
@@ -113,8 +111,8 @@ void LedUpdate(void)
 	if(flag.stateOn && flag.ledUpdate)
 	{
 		LED_DDR |= LED_MASK; /* Port out */
-		/* LED_PORT &= ~(1 << LED_COM); #<{(| Led common set 0 (Led On)|)}># */
 		LED_PORT &= ~LED_MASK;
+		/* LED_PORT &= ~(1 << LED_COM); #<{(| Led common set 0 (Led On)|)}># */
 		LED_PORT |= (1 << LED_ON);
 		if(flag.stateDimmer)
 			LED_PORT |= (1 << LED_DIM);
@@ -128,6 +126,7 @@ void LedUpdate(void)
 	} 
 	else
 	{
+		LED_PORT &= ~(1 << LED_ON);
 		LED_DDR &= ~LED_MASK;
 	}
 }

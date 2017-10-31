@@ -55,8 +55,20 @@
 #define LED_MASK	((1 << LED_LOW)|(1 << LED_HIGH)|(1 << LED_ON)|(1 << LED_DIM)|(1 << LED_COM))
 
 //Times
-#define PERIOD_KEY_SCAN		15
+#define PERIOD_KEY_SCAN		20
 #define PERIOD_LED_UPDATE	1
+
+//Outputs
+#define OUT_PORT	PORTC
+#define OUT_DDR		DDRC
+
+#define OUT_BUZ		PC0
+#define OUT_100_W	PC1
+#define OUT_SWING	PC2
+#define OUT_1000W	PC3
+#define OUT_FAN		PC4
+
+#define OUT_MASK	((1 << OUT_BUZ)|(1 << OUT_100_W)|(1 << OUT_SWING)|(1 << OUT_1000W)|(1 << OUT_FAN))
 
 //Enumerations
 enum keypad {

@@ -18,6 +18,7 @@ Flags::stateDimmer	fireplace.h	/^	uint8_t stateDimmer:	1;$/;"	m	struct:Flags	acc
 Flags::stateHigh	fireplace.h	/^	uint8_t	stateHigh:	1;$/;"	m	struct:Flags	access:public
 Flags::stateLow	fireplace.h	/^	uint8_t stateLow:	1;$/;"	m	struct:Flags	access:public
 Flags::stateOn	fireplace.h	/^	uint8_t stateOn:	1;$/;"	m	struct:Flags	access:public
+ISR	fireplace.c	/^ISR(INT0_vect)$/;"	f
 ISR	fireplace.c	/^ISR(TIMER0_OVF_vect) $/;"	f
 Init	fireplace.c	/^void Init(void)$/;"	f	signature:(void)
 Init	fireplace.h	/^void Init(void);$/;"	p	signature:(void)
@@ -45,6 +46,14 @@ LedUpdate	fireplace.c	/^void LedUpdate(void)$/;"	f	signature:(void)
 LedUpdate	fireplace.h	/^void LedUpdate(void);$/;"	p	signature:(void)
 MCU	Makefile	/^MCU = mcu=atmega8$/;"	m
 OD	Makefile	/^OD = avr-objdump$/;"	m
+OUT_1000W	fireplace.h	68;"	d
+OUT_100_W	fireplace.h	66;"	d
+OUT_BUZ	fireplace.h	65;"	d
+OUT_DDR	fireplace.h	63;"	d
+OUT_FAN	fireplace.h	69;"	d
+OUT_MASK	fireplace.h	71;"	d
+OUT_PORT	fireplace.h	62;"	d
+OUT_SWING	fireplace.h	67;"	d
 PERIOD_KEY_SCAN	fireplace.h	58;"	d
 PERIOD_LED_UPDATE	fireplace.h	59;"	d
 RM	Makefile	/^RM = rm$/;"	m
