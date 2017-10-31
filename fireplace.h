@@ -47,7 +47,7 @@
 #define LED_DDR		DDRD
 #define LED_PIN		PIND
 
-#define LED_COM		PD2
+#define LED_COM		PD5
 #define LED_LOW		PD3
 #define LED_HIGH	PD4
 #define LED_ON		PD1

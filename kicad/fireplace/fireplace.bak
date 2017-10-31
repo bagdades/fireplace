@@ -25,6 +25,7 @@ LIBS:contrib
 LIBS:Switch
 LIBS:MCU_Microchip_PIC18
 LIBS:MCU_Microchip_PIC16
+LIBS:fireplace-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -600,4 +601,14 @@ Wire Wire Line
 	10100 4100 10500 4100
 Wire Wire Line
 	10100 4200 10500 4200
+Text Label 10500 3800 0    60   ~ 0
+BUZZER
+Text Label 10500 3900 0    60   ~ 0
+100_W
+Text Label 10500 4000 0    60   ~ 0
+SWING
+Text Label 10500 4100 0    60   ~ 0
+1000W
+Text Label 10500 4200 0    60   ~ 0
+FAN
 $EndSCHEMATC

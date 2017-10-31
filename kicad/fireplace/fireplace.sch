@@ -382,8 +382,6 @@ F 3 "" H 7950 3600 50  0001 C CNN
 $EndComp
 Text Label 2100 4350 0    60   ~ 0
 LED_COM
-Text Label 10500 4900 0    60   ~ 0
-LED_COM
 Text Label 10500 5000 0    60   ~ 0
 LOW
 Text Label 10500 5100 0    60   ~ 0
@@ -611,4 +609,8 @@ Text Label 10500 4100 0    60   ~ 0
 1000W
 Text Label 10500 4200 0    60   ~ 0
 FAN
+Wire Wire Line
+	10100 5200 10500 5200
+Text Label 10500 5200 0    60   ~ 0
+LED_COM
 $EndSCHEMATC

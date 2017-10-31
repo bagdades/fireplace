@@ -41,6 +41,7 @@ void Init(void)
 {
 	OUT_PORT &= ~OUT_MASK;//Set output 0
 	OUT_DDR |= OUT_MASK;//Output port config out;
+	GIMSK |= _BV(INT0);
 	sei();
 }
 
