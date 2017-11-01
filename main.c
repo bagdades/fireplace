@@ -17,6 +17,9 @@
  */
 #include "fireplace.h"
 
+extern volatile uint8_t command;
+extern volatile uint8_t commandInv;
+
 
 int main(void)
 {
@@ -25,6 +28,22 @@ int main(void)
 	Init();
 	while(1)
 	{
+		if (flag.newCom) 
+		{
+			flag.stateOn = TRUE;
+			flag.newCom = FALSE;
+			if(command == commandInv)
+			{
+				switch (command) 
+				{
+					case 0x4C:
+						flag.stateHigh = TRUE;
+						break;
+					default:
+						break;						
+				}
+			}
+		}
 		if (flag.keyScan) 
 		{
 			keyPressed = KeyScan();

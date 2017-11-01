@@ -1,9 +1,9 @@
-syn keyword CTagsLocalVariable keyPressed temp key
+syn keyword CTagsLocalVariable key keyPressed temp
 syn keyword CTagsStructure Flags
-syn keyword CTagsMember stateHigh stateLow stateOn keyScan ledUpdate stateDimmer
-syn keyword CTagsGlobalVariable flag countTimeLedUpdate countTimeKeyScan
+syn keyword CTagsMember keyScan newCom stateDimmer ledUpdate stateLow stateOn startCom stateHigh
+syn keyword CTagsGlobalVariable flag firstT2 countTimeLedUpdate commandInv command iBit countTimeKeyScan
 syn keyword CTagsEnumeratorName keypad
-syn keyword CTagsEnumerationValue _HIGH _ON_OFF TRUE _DIMMER _FALSE _LOW FALSE
-syn keyword CTagsFunction Timer0Init Init KeyScan LedUpdate ISR main
-syn keyword CTagsDefinedName LED_MASK LED_ON OUT_100_W OUT_FAN KEY_HIGH DELAY_LONG LED_COM KEY_ON KEY_PORT OUT_PORT OUT_1000W T0_INIT T0_PRESC LED_DDR OUT_MASK LED_LOW LED_PORT OUT_DDR T0_FREQ PERIOD_KEY_SCAN KEY_DIM KEY_PIN LED_PIN OUT_BUZ LED_HIGH KEY_MASK OUT_SWING DELAY_SHORT PERIOD_LED_UPDATE KEY_DDR LED_DIM KEY_LOW F_CPU
+syn keyword CTagsEnumerationValue _DIMMER TRUE FALSE _ON_OFF _FALSE _LOW _HIGH
+syn keyword CTagsFunction Init LedUpdate ISR main Timer0Init KeyScan
+syn keyword CTagsDefinedName KEY_PORT DELAY_LONG LED_PORT T0_FREQ KEY_DIM LED_DDR LED_ON KEY_PIN OUT_PORT KEY_MASK F_CPU KEY_DDR OUT_BUZ LED_COM LED_MASK DELAY_SHORT StopT2 PERIOD_KEY_SCAN T0_INIT KEY_HIGH PERIOD_LED_UPDATE T0_PRESC OUT_FAN LED_DIM LED_HIGH LED_PIN KEY_LOW LED_LOW OUT_SWING OUT_DDR StartT2 KEY_ON OUT_100_W OUT_1000W OUT_MASK
 

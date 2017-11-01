@@ -70,6 +70,11 @@
 
 #define OUT_MASK	((1 << OUT_BUZ)|(1 << OUT_100_W)|(1 << OUT_SWING)|(1 << OUT_1000W)|(1 << OUT_FAN))
 
+
+//Timer 2 defines
+#define StartT2		TIMSK |= (1 << TOIE2)
+#define StopT2		TIMSK &= ~(1 << TOIE2)
+
 //Enumerations
 enum keypad {
 	_ON_OFF = 1,
@@ -91,6 +96,8 @@ volatile struct Flags {
 	uint8_t stateDimmer:	1;
 	uint8_t stateLow:	1;
 	uint8_t	stateHigh:	1;
+	uint8_t startCom:	1;
+	uint8_t newCom:		1;
 }flag;
 
 

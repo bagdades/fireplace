@@ -35,13 +35,22 @@
 
 volatile uint8_t countTimeKeyScan = PERIOD_KEY_SCAN;
 volatile uint8_t countTimeLedUpdate;
+volatile uint8_t iBit;
+volatile uint8_t command;
+volatile uint8_t commandInv;
+volatile uint8_t firstT2;
 
 
 void Init(void)
 {
 	OUT_PORT &= ~OUT_MASK;//Set output 0
 	OUT_DDR |= OUT_MASK;//Output port config out;
-	GIMSK |= _BV(INT0);
+	GIMSK |= _BV(INT0); /* enable interrupt INT0 */
+	MCUCR |= (1 << ISC01)|(1 << ISC00); /* falling front */
+
+	TCCR2 |= (1 << CS22) | (1 << CS20); /* T2_PRESC = 1024 */
+	TCNT2 = 0;
+
 	sei();
 }
 
@@ -70,6 +79,61 @@ ISR(TIMER0_OVF_vect)
 		if(countTimeLedUpdate == 0)
 			flag.ledUpdate = FALSE;
 	}
+}
+
+ISR(TIMER2_OVF_vect)
+{
+	if (firstT2 == 0) 
+	{
+		firstT2 = 1;	
+	} 
+	else 
+	{
+		flag.startCom = FALSE;
+		firstT2 = 0;
+		flag.stateLow = TRUE;
+		StopT2;
+	}
+}
+
+ISR(INT0_vect)
+{
+	if (flag.startCom == FALSE) 
+	{
+		flag.newCom == FALSE;
+		flag.startCom == TRUE;
+		StartT2;
+	} else
+	{
+		if (TCNT2 > 0x69 && TCNT2 < 0x7D) /* 13,5 ms - 16 ms */
+		{
+			iBit = 32;
+		}
+		if (TCNT2 > 0x08 && TCNT2 < 0x0B) /* 1,12 ms - 1,41 ms */
+		{
+			if((iBit > 0) && (iBit < 9)) command &= ~(1 << (iBit - 1));
+			if((iBit > 8) && (iBit < 17)) commandInv |= (1 << (iBit - 9));
+			iBit--;
+		}
+		if (TCNT2 > 0x11 && TCNT2 < 0x14) /* 2,25 ms - 2,56 ms */
+		{
+			if((iBit > 0) && (iBit < 9)) command |= (1 << (iBit - 1));
+			if((iBit > 8) && (iBit < 17)) commandInv &= ~(1 << (iBit - 9));
+			iBit--;
+		}
+		if (TCNT2 > 0x57 && TCNT2 < 0x5C) /* 11,25ms - 11,8ms */
+		{
+			flag.newCom = TRUE;
+		}
+		if (iBit == 0) 
+		{
+			StopT2;
+			flag.newCom = TRUE;
+			flag.startCom = FALSE;
+			firstT2 = 0;
+		}
+	}
+	TCNT2 = 0;
 }
 
 uint8_t KeyScan(void)
