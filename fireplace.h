@@ -18,6 +18,7 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/eeprom.h>
 
 
 # define F_CPU 8000000UL
@@ -72,8 +73,10 @@
 
 
 //Timer 2 defines
-#define StartT2		TIMSK |= (1 << TOIE2)
-#define StopT2		TIMSK &= ~(1 << TOIE2)
+/* #define StartT2		TIMSK |= (1 << TOIE2) */
+/* #define StopT2		TIMSK &= ~(1 << TOIE2) */
+#define StartT2		TCCR2 |= (1 << CS22) | (1 << CS21) | (1 << CS20)
+#define StopT2		TCCR2 &= ~((1 << CS22) | (1 << CS21) | (1 << CS20))
 
 //Enumerations
 enum keypad {

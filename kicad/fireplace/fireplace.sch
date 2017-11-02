@@ -613,4 +613,8 @@ Wire Wire Line
 	10100 5200 10500 5200
 Text Label 10500 5200 0    60   ~ 0
 LED_COM
+Text Label 4900 4450 0    60   ~ 0
+IR_IN
+Text Label 10500 4900 0    60   ~ 0
+IR_IN
 $EndSCHEMATC

@@ -35,17 +35,34 @@ int main(void)
 			{
 				switch (command) 
 				{
-					case 0x23:
-						flag.stateHigh = TRUE;
+					case 0xDC:
+						if(flag.stateOn)
+							flag.stateOn = FALSE;
+						else flag.stateOn = TRUE;
 						break;
-					case 0x83:
-						flag.stateDimmer = TRUE;
+					case 0x7C:
+						if(flag.stateOn)
+						{
+							if(flag.stateDimmer)
+								flag.stateDimmer = FALSE;
+							else flag.stateDimmer = TRUE;
+						}
 						break;
-					case 0x13:
-						flag.stateLow;
+					case 0xEC:
+						if (flag.stateOn) 
+						{
+							if(flag.stateLow)
+								flag.stateLow = FALSE;
+							else flag.stateLow = TRUE;
+						}
 						break;
-					case 0x93:
-						flag.stateHigh;
+					case 0x6C:
+						if (flag.stateOn) 
+						{
+							if(flag.stateHigh)
+								flag.stateHigh = FALSE;
+							else flag.stateHigh = TRUE;
+						}
 						break;
 					default:
 						break;						
@@ -68,7 +85,6 @@ int main(void)
 						if(flag.stateDimmer)
 							flag.stateDimmer = FALSE;
 						else flag.stateDimmer = TRUE;
-
 					}
 					break;
 				case _LOW:
