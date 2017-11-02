@@ -30,14 +30,22 @@ int main(void)
 	{
 		if (flag.newCom) 
 		{
-			flag.stateOn = TRUE;
 			flag.newCom = FALSE;
 			if(command == commandInv)
 			{
 				switch (command) 
 				{
-					case 0x4C:
+					case 0xC4:
 						flag.stateHigh = TRUE;
+						break;
+					case 0x83:
+						flag.stateDimmer = TRUE;
+						break;
+					case 0x13:
+						flag.stateLow;
+						break;
+					case 0x93:
+						flag.stateHigh;
 						break;
 					default:
 						break;						

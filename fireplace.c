@@ -91,7 +91,6 @@ ISR(TIMER2_OVF_vect)
 	{
 		flag.startCom = FALSE;
 		firstT2 = 0;
-		flag.stateLow = TRUE;
 		StopT2;
 	}
 }
@@ -100,8 +99,8 @@ ISR(INT0_vect)
 {
 	if (flag.startCom == FALSE) 
 	{
-		flag.newCom == FALSE;
-		flag.startCom == TRUE;
+		flag.newCom = FALSE;
+		flag.startCom = TRUE;
 		StartT2;
 	} else
 	{
