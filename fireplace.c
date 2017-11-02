@@ -48,7 +48,7 @@ void Init(void)
 	GIMSK |= _BV(INT0); /* enable interrupt INT0 */
 	MCUCR |= (1 << ISC01)|(1 << ISC00); /* falling front */
 
-	TCCR2 |= (1 << CS22) | (1 << CS20); /* T2_PRESC = 1024 */
+	TCCR2 |= (1 << CS22) | (1 << CS21) |  (1 << CS20); /* T2_PRESC = 1024 */
 	TCNT2 = 0;
 
 	sei();
@@ -83,16 +83,16 @@ ISR(TIMER0_OVF_vect)
 
 ISR(TIMER2_OVF_vect)
 {
-	if (firstT2 == 0) 
-	{
-		firstT2 = 1;	
-	} 
-	else 
-	{
+	/* if (firstT2 == 0)  */
+	/* { */
+	/* 	firstT2 = 1; */
+	/* }  */
+	/* else  */
+	/* { */
 		flag.startCom = FALSE;
 		firstT2 = 0;
 		StopT2;
-	}
+	/* } */
 }
 
 ISR(INT0_vect)
@@ -101,10 +101,11 @@ ISR(INT0_vect)
 	{
 		flag.newCom = FALSE;
 		flag.startCom = TRUE;
+		TCNT2 = 0;
 		StartT2;
 	} else
 	{
-		if (TCNT2 > 0x69 && TCNT2 < 0x7D) /* 13,5 ms - 16 ms */
+		if ((TCNT2 > 0x60) && (TCNT2 < 0x7D)) /* 13,5 ms - 16 ms */
 		{
 			iBit = 32;
 		}

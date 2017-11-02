@@ -35,7 +35,7 @@ int main(void)
 			{
 				switch (command) 
 				{
-					case 0xC4:
+					case 0x23:
 						flag.stateHigh = TRUE;
 						break;
 					case 0x83:
