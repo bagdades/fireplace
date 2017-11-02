@@ -617,4 +617,10 @@ Text Label 4900 4450 0    60   ~ 0
 IR_IN
 Text Label 10500 4900 0    60   ~ 0
 IR_IN
+Text Label 4850 4050 0    60   ~ 0
+LAMP
+Wire Wire Line
+	10100 4300 10500 4300
+Text Label 10500 4300 0    60   ~ 0
+LAMP
 $EndSCHEMATC

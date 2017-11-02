@@ -7,65 +7,70 @@
 AS	Makefile	/^AS = avr-gcc$/;"	m
 CC	Makefile	/^CC = avr-gcc$/;"	m
 CP	Makefile	/^CP = avr-objcopy$/;"	m
-DELAY_LONG	fireplace.h	43;"	d
-DELAY_SHORT	fireplace.h	42;"	d
+DELAY_LONG	fireplace.h	44;"	d
+DELAY_SHORT	fireplace.h	43;"	d
 FALSE	fireplace.h	/^	FALSE = 0,$/;"	e	enum:__anon1
-F_CPU	fireplace.h	23;"	d
+F_CPU	fireplace.h	24;"	d
 Flags	fireplace.h	/^volatile struct Flags {$/;"	s
-Flags::keyScan	fireplace.h	/^	uint8_t keyScan:	1;$/;"	m	struct:Flags	access:public
-Flags::ledUpdate	fireplace.h	/^	uint8_t ledUpdate:	1;$/;"	m	struct:Flags	access:public
-Flags::newCom	fireplace.h	/^	uint8_t newCom:		1;$/;"	m	struct:Flags	access:public
-Flags::startCom	fireplace.h	/^	uint8_t startCom:	1;$/;"	m	struct:Flags	access:public
-Flags::stateDimmer	fireplace.h	/^	uint8_t stateDimmer:	1;$/;"	m	struct:Flags	access:public
-Flags::stateHigh	fireplace.h	/^	uint8_t	stateHigh:	1;$/;"	m	struct:Flags	access:public
-Flags::stateLow	fireplace.h	/^	uint8_t stateLow:	1;$/;"	m	struct:Flags	access:public
-Flags::stateOn	fireplace.h	/^	uint8_t stateOn:	1;$/;"	m	struct:Flags	access:public
+Flags::buzzer	fireplace.h	/^	uint16_t buzzer:		1;$/;"	m	struct:Flags	access:public
+Flags::keyScan	fireplace.h	/^	uint16_t keyScan:		1;$/;"	m	struct:Flags	access:public
+Flags::ledUpdate	fireplace.h	/^	uint16_t ledUpdate:		1;$/;"	m	struct:Flags	access:public
+Flags::newCom	fireplace.h	/^	uint16_t newCom:		1;$/;"	m	struct:Flags	access:public
+Flags::startCom	fireplace.h	/^	uint16_t startCom:		1;$/;"	m	struct:Flags	access:public
+Flags::stateDimmer	fireplace.h	/^	uint16_t stateDimmer:	1;$/;"	m	struct:Flags	access:public
+Flags::stateHigh	fireplace.h	/^	uint16_t stateHigh:		1;$/;"	m	struct:Flags	access:public
+Flags::stateLow	fireplace.h	/^	uint16_t stateLow:		1;$/;"	m	struct:Flags	access:public
+Flags::stateOn	fireplace.h	/^	uint16_t stateOn:		1;$/;"	m	struct:Flags	access:public
 ISR	fireplace.c	/^ISR(INT0_vect)$/;"	f
 ISR	fireplace.c	/^ISR(TIMER0_OVF_vect) $/;"	f
 ISR	fireplace.c	/^ISR(TIMER2_OVF_vect)$/;"	f
 Init	fireplace.c	/^void Init(void)$/;"	f	signature:(void)
 Init	fireplace.h	/^void Init(void);$/;"	p	signature:(void)
-KEY_DDR	fireplace.h	33;"	d
-KEY_DIM	fireplace.h	39;"	d
-KEY_HIGH	fireplace.h	37;"	d
-KEY_LOW	fireplace.h	36;"	d
-KEY_MASK	fireplace.h	40;"	d
-KEY_ON	fireplace.h	38;"	d
-KEY_PIN	fireplace.h	34;"	d
-KEY_PORT	fireplace.h	32;"	d
+KEY_DDR	fireplace.h	34;"	d
+KEY_DIM	fireplace.h	40;"	d
+KEY_HIGH	fireplace.h	38;"	d
+KEY_LOW	fireplace.h	37;"	d
+KEY_MASK	fireplace.h	41;"	d
+KEY_ON	fireplace.h	39;"	d
+KEY_PIN	fireplace.h	35;"	d
+KEY_PORT	fireplace.h	33;"	d
 KeyScan	fireplace.c	/^uint8_t KeyScan(void)$/;"	f	signature:(void)
 KeyScan	fireplace.h	/^uint8_t KeyScan(void);$/;"	p	signature:(void)
 LD	Makefile	/^LD = avr-gcc$/;"	m
-LED_COM	fireplace.h	50;"	d
-LED_DDR	fireplace.h	47;"	d
-LED_DIM	fireplace.h	54;"	d
-LED_HIGH	fireplace.h	52;"	d
-LED_LOW	fireplace.h	51;"	d
-LED_MASK	fireplace.h	55;"	d
-LED_ON	fireplace.h	53;"	d
-LED_PIN	fireplace.h	48;"	d
-LED_PORT	fireplace.h	46;"	d
+LED_COM	fireplace.h	51;"	d
+LED_DDR	fireplace.h	48;"	d
+LED_DIM	fireplace.h	55;"	d
+LED_HIGH	fireplace.h	53;"	d
+LED_LOW	fireplace.h	52;"	d
+LED_MASK	fireplace.h	56;"	d
+LED_ON	fireplace.h	54;"	d
+LED_PIN	fireplace.h	49;"	d
+LED_PORT	fireplace.h	47;"	d
 LedUpdate	fireplace.c	/^void LedUpdate(void)$/;"	f	signature:(void)
 LedUpdate	fireplace.h	/^void LedUpdate(void);$/;"	p	signature:(void)
 MCU	Makefile	/^MCU = mcu=atmega8$/;"	m
 OD	Makefile	/^OD = avr-objdump$/;"	m
-OUT_1000W	fireplace.h	68;"	d
-OUT_100_W	fireplace.h	66;"	d
-OUT_BUZ	fireplace.h	65;"	d
-OUT_DDR	fireplace.h	63;"	d
-OUT_FAN	fireplace.h	69;"	d
-OUT_MASK	fireplace.h	71;"	d
-OUT_PORT	fireplace.h	62;"	d
-OUT_SWING	fireplace.h	67;"	d
-PERIOD_KEY_SCAN	fireplace.h	58;"	d
-PERIOD_LED_UPDATE	fireplace.h	59;"	d
+OUT_1000W	fireplace.h	70;"	d
+OUT_100_W	fireplace.h	68;"	d
+OUT_BUZ	fireplace.h	67;"	d
+OUT_DDR	fireplace.h	65;"	d
+OUT_FAN	fireplace.h	71;"	d
+OUT_LAMP	fireplace.h	72;"	d
+OUT_MASK	fireplace.h	74;"	d
+OUT_PORT	fireplace.h	64;"	d
+OUT_SWING	fireplace.h	69;"	d
+OutControll	fireplace.c	/^void OutControll(void)$/;"	f	signature:(void)
+OutControll	fireplace.h	/^void OutControll(void);$/;"	p	signature:(void)
+PERIOD_BUZZER	fireplace.h	61;"	d
+PERIOD_KEY_SCAN	fireplace.h	59;"	d
+PERIOD_LED_UPDATE	fireplace.h	60;"	d
 RM	Makefile	/^RM = rm$/;"	m
 SZ	Makefile	/^SZ = avr-size$/;"	m
-StartT2	fireplace.h	75;"	d
-StopT2	fireplace.h	76;"	d
-T0_FREQ	fireplace.h	28;"	d
-T0_INIT	fireplace.h	29;"	d
-T0_PRESC	fireplace.h	27;"	d
+StartT2	fireplace.h	80;"	d
+StopT2	fireplace.h	81;"	d
+T0_FREQ	fireplace.h	29;"	d
+T0_INIT	fireplace.h	30;"	d
+T0_PRESC	fireplace.h	28;"	d
 TARGET	Makefile	/^TARGET = fireplace$/;"	m
 TRUE	fireplace.h	/^	TRUE$/;"	e	enum:__anon1
 Timer0Init	fireplace.c	/^void Timer0Init(void) $/;"	f	signature:(void)
@@ -75,8 +80,10 @@ _FALSE	fireplace.h	/^	_FALSE$/;"	e	enum:keypad
 _HIGH	fireplace.h	/^	_HIGH,$/;"	e	enum:keypad
 _LOW	fireplace.h	/^	_LOW,$/;"	e	enum:keypad
 _ON_OFF	fireplace.h	/^	_ON_OFF = 1,$/;"	e	enum:keypad
+buzzer	fireplace.h	/^	uint16_t buzzer:		1;$/;"	m	struct:Flags	access:public
 command	fireplace.c	/^volatile uint8_t command;$/;"	v
 commandInv	fireplace.c	/^volatile uint8_t commandInv;$/;"	v
+countTimeBuzzer	fireplace.c	/^volatile uint8_t countTimeBuzzer = PERIOD_BUZZER;$/;"	v
 countTimeKeyScan	fireplace.c	/^volatile uint8_t countTimeKeyScan = PERIOD_KEY_SCAN;$/;"	v
 countTimeLedUpdate	fireplace.c	/^volatile uint8_t countTimeLedUpdate;$/;"	v
 firstT2	fireplace.c	/^volatile uint8_t firstT2;$/;"	v
@@ -84,14 +91,14 @@ flag	fireplace.h	/^}flag;$/;"	v	typeref:struct:Flags
 iBit	fireplace.c	/^volatile uint8_t iBit;$/;"	v
 key	fireplace.c	/^	uint8_t key = 0;$/;"	l
 keyPressed	main.c	/^	uint8_t keyPressed;$/;"	l
-keyScan	fireplace.h	/^	uint8_t keyScan:	1;$/;"	m	struct:Flags	access:public
+keyScan	fireplace.h	/^	uint16_t keyScan:		1;$/;"	m	struct:Flags	access:public
 keypad	fireplace.h	/^enum keypad {$/;"	g
-ledUpdate	fireplace.h	/^	uint8_t ledUpdate:	1;$/;"	m	struct:Flags	access:public
+ledUpdate	fireplace.h	/^	uint16_t ledUpdate:		1;$/;"	m	struct:Flags	access:public
 main	main.c	/^int main(void)$/;"	f	signature:(void)
-newCom	fireplace.h	/^	uint8_t newCom:		1;$/;"	m	struct:Flags	access:public
-startCom	fireplace.h	/^	uint8_t startCom:	1;$/;"	m	struct:Flags	access:public
-stateDimmer	fireplace.h	/^	uint8_t stateDimmer:	1;$/;"	m	struct:Flags	access:public
-stateHigh	fireplace.h	/^	uint8_t	stateHigh:	1;$/;"	m	struct:Flags	access:public
-stateLow	fireplace.h	/^	uint8_t stateLow:	1;$/;"	m	struct:Flags	access:public
-stateOn	fireplace.h	/^	uint8_t stateOn:	1;$/;"	m	struct:Flags	access:public
+newCom	fireplace.h	/^	uint16_t newCom:		1;$/;"	m	struct:Flags	access:public
+startCom	fireplace.h	/^	uint16_t startCom:		1;$/;"	m	struct:Flags	access:public
+stateDimmer	fireplace.h	/^	uint16_t stateDimmer:	1;$/;"	m	struct:Flags	access:public
+stateHigh	fireplace.h	/^	uint16_t stateHigh:		1;$/;"	m	struct:Flags	access:public
+stateLow	fireplace.h	/^	uint16_t stateLow:		1;$/;"	m	struct:Flags	access:public
+stateOn	fireplace.h	/^	uint16_t stateOn:		1;$/;"	m	struct:Flags	access:public
 temp	fireplace.c	/^	static uint8_t temp = 0;$/;"	l	file:

@@ -58,6 +58,7 @@
 //Times
 #define PERIOD_KEY_SCAN		20
 #define PERIOD_LED_UPDATE	1
+#define PERIOD_BUZZER		50
 
 //Outputs
 #define OUT_PORT	PORTC
@@ -68,6 +69,7 @@
 #define OUT_SWING	PC2
 #define OUT_1000W	PC3
 #define OUT_FAN		PC4
+#define OUT_LAMP	PC5
 
 #define OUT_MASK	((1 << OUT_BUZ)|(1 << OUT_100_W)|(1 << OUT_SWING)|(1 << OUT_1000W)|(1 << OUT_FAN))
 
@@ -93,14 +95,15 @@ enum {
 };
 
 volatile struct Flags {
-	uint8_t keyScan:	1;
-	uint8_t ledUpdate:	1;
-	uint8_t stateOn:	1;
-	uint8_t stateDimmer:	1;
-	uint8_t stateLow:	1;
-	uint8_t	stateHigh:	1;
-	uint8_t startCom:	1;
-	uint8_t newCom:		1;
+	uint16_t keyScan:		1;
+	uint16_t ledUpdate:		1;
+	uint16_t stateOn:		1;
+	uint16_t stateDimmer:	1;
+	uint16_t stateLow:		1;
+	uint16_t stateHigh:		1;
+	uint16_t startCom:		1;
+	uint16_t newCom:		1;
+	uint16_t buzzer:		1;
 }flag;
 
 
@@ -109,3 +112,4 @@ void Timer0Init(void);
 void Init(void);
 uint8_t KeyScan(void);
 void LedUpdate(void);
+void OutControll(void);

@@ -68,6 +68,7 @@ int main(void)
 						break;						
 				}
 			}
+			OutControll();
 		}
 		if (flag.keyScan) 
 		{
@@ -106,6 +107,7 @@ int main(void)
 				default:
 					break;
 			}
+			OutControll();
 			flag.keyScan = FALSE;	
 			flag.ledUpdate = TRUE;
 		}

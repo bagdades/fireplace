@@ -35,11 +35,11 @@
 
 volatile uint8_t countTimeKeyScan = PERIOD_KEY_SCAN;
 volatile uint8_t countTimeLedUpdate;
+volatile uint8_t countTimeBuzzer;
 volatile uint8_t iBit;
 volatile uint8_t command;
 volatile uint8_t commandInv;
 volatile uint8_t firstT2;
-/* uint8_t saveT2 EEMEM; */
 
 
 void Init(void)
@@ -49,8 +49,7 @@ void Init(void)
 	GIMSK |= _BV(INT0); /* enable interrupt INT0 */
 	MCUCR |= (1 << ISC01)|(1 << ISC00); /* falling front */
 
-	TIMSK |= (1 << TOIE2);
-	/* TCCR2 |= (1 << CS22) | (1 << CS21) |  (1 << CS20); #<{(| T2_PRESC = 1024 |)}># */
+	TIMSK |= (1 << TOIE2); /* Enable interrupt overflow timer2 */
 	TCNT2 = 0;
 
 	sei();
@@ -80,6 +79,16 @@ ISR(TIMER0_OVF_vect)
 		countTimeLedUpdate--;
 		if(countTimeLedUpdate == 0)
 			flag.ledUpdate = FALSE;
+	}
+	if (countTimeBuzzer) 
+	{
+		countTimeBuzzer--;
+		if (flag.stateOn) 
+		{
+			if(bit_is_clear(OUT_PORT, OUT_BUZ))
+				OUT_PORT |= (1 << OUT_BUZ);
+			else OUT_PORT &= ~(1 << OUT_BUZ);
+		}
 	}
 }
 
@@ -116,6 +125,7 @@ ISR(INT0_vect)
 			StopT2;
 			flag.newCom = TRUE;
 			flag.startCom = FALSE;
+			countTimeBuzzer = PERIOD_BUZZER;
 		}
 	}
 	TCNT2 = 0;
@@ -145,7 +155,10 @@ uint8_t KeyScan(void)
 	if (key) 
 	{
 		if(!temp)
+		{
+			countTimeBuzzer = PERIOD_BUZZER;
 			temp = key;
+		}
 	} 
 	else 
 	{
@@ -178,5 +191,42 @@ void LedUpdate(void)
 	{
 		LED_PORT &= ~(1 << LED_ON);
 		LED_DDR &= ~LED_MASK;
+	}
+}
+
+void OutControll(void)
+{
+	if (flag.stateOn) 
+	{
+		if (flag.stateDimmer) 
+			OUT_PORT |= (1 << OUT_LAMP);
+		else
+			OUT_PORT &= ~(1 << OUT_LAMP);
+		if (flag.stateLow) 
+		{
+			OUT_PORT |= (1 << OUT_100_W);
+			OUT_PORT |= (1 << OUT_FAN);
+		}
+		else
+		{
+			OUT_PORT &= ~(1 << OUT_100_W);
+			if(!flag.stateHigh)
+				OUT_PORT &= ~(1 << OUT_FAN);
+		}
+		if (flag.stateHigh) 
+		{
+			OUT_PORT |= (1 << OUT_1000W);
+			OUT_PORT |= (1 << OUT_FAN);
+		}
+		else
+		{
+			OUT_PORT &= ~(1 << OUT_1000W);
+			if(!flag.stateLow)
+				OUT_PORT &= ~(1 << OUT_FAN);
+		}
+	} 
+	else 
+	{
+		OUT_PORT &= ~((1 << OUT_100_W) | (1 << OUT_1000W) | (1 << OUT_SWING) | (1 << OUT_FAN) | (1 << OUT_LAMP));
 	}
 }
