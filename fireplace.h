@@ -71,7 +71,7 @@
 #define OUT_FAN		PC4
 #define OUT_LAMP	PC5
 
-#define OUT_MASK	((1 << OUT_BUZ)|(1 << OUT_100_W)|(1 << OUT_SWING)|(1 << OUT_1000W)|(1 << OUT_FAN))
+#define OUT_MASK	((1 << OUT_LAMP) | (1 << OUT_BUZ)|(1 << OUT_100_W)|(1 << OUT_SWING)|(1 << OUT_1000W)|(1 << OUT_FAN))
 
 
 //Timer 2 defines
